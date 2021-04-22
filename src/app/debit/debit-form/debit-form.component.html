@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="debitForm">
+        <label for="sum">Sum</label>
+        <input type="number" class="form-control" id="sum" formControlName="sum">
+        <label for="comment">Comment</label>
+        <input type="text" class="form-control" id="comment" formControlName="comment">
+        <label for="type">Debit Type</label>
+        <select class="form-control" id="type" formControlName="type">
+          <option *ngFor="let type of this.availableDebitType" [ngValue]="type">Payment by {{type.text}}</option>
+        </select>
+        <button *ngIf="!visible" type="button" class="btn btn-primary mt-2" (click)="goToDebitReport()"[disabled]="debitForm.invalid">Go To Debit Report</button>
+        <button *ngIf="visible" type="button" class="btn btn-primary mt-2" (click)="createDebit()"[disabled]="debitForm.invalid">Send Debit</button>
+        <button *ngIf="visible" type="button" class="btn btn-primary mt-2" (click)="cancelDebit()"[disabled]="debitForm.invalid">Cancel Debit</button>
+      </form>
+    </div>
+
+</div>
+<div>
+  <app-debit-report *ngIf="visible" [debit]="debit"></app-debit-report>
+</div>

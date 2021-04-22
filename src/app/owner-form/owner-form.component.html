@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="ownerForm">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <label for="balance">Balance</label>
+        <input type="text" class="form-control" id="balance" formControlName="balance">
+		<div class="text-danger" *ngIf="balance.invalid && (id.dirty || id.touched)">
+			<small *ngIf="price.errors.min">Price is low</small>
+		</div>
+        <label for="uploader">Uploader</label>
+        <select (change)="fillBalance()" [compareWith]="compareApartments" class="form-control" id="apartment" formControlName="apartment">
+          <option *ngFor="let apartment of apartmentList" [ngValue]="apartment">Emelet: {{apartment.floor}} Ajtó: {{apartment.door}}</option>
+        </select>
+        <button type="button" class="btn btn-primary mt-2" (click)="addOwner()"[disabled]="ownerForm.invalid">Add or replace owner</button>
+      </form>
+    </div>
+</div>
