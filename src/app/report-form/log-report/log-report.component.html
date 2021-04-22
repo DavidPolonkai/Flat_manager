@@ -1,0 +1,34 @@
+<div class="col-md-10">
+    <div class="row">
+        Opening Debit: {{openingDebit}}     
+    </div>
+    <div class="row">
+        Closing Debit: {{closingDebit}}
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            Date
+        </div>
+        <div class="col-md-2">
+           Sum
+        </div>
+        <div class="col-md-2">
+            Comment
+    
+        </div>
+        <div class="col-md-2">
+            Actual balance
+    
+        </div>
+        <div class="col-md-2">
+            name
+        </div>
+    </div>
+    <div class="col-md-12" *ngFor="let log of logList">
+        
+        <app-report-entity [log]="log">
+        </app-report-entity>
+    
+    </div>
+</div>
+    

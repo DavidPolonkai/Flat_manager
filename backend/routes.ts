@@ -19,12 +19,16 @@ export function getRouter() {
     router.post('/owners', ownerController.create);
     router.put('/owners', ownerController.update);
     router.delete('/owners/:id', ownerController.delete);
+    router.put('/owners/balance', ownerController.updateBalance);
 
     router.get('/logs', logController.getAll);
+    router.get('/logs/:startDate&:endDate&:ownerId', logController.getPeriodicLogByOwner);
+    router.get('/logs/:startDate&:endDate', logController.getPeriodicLog);
     router.get('/logs/:id', logController.getOne);
     router.post('/logs', logController.create);
     router.put('/logs', logController.update);
     router.delete('/logs/:id', logController.delete);
+
 
     router.get('/apartments', apartmentController.getAll);
     router.get('/apartments/inuse', apartmentController.getInUse);

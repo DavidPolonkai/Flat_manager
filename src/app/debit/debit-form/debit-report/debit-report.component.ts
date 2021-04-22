@@ -27,9 +27,10 @@ export class DebitReportComponent implements OnInit {
   ) { }
 
   async ngOnInit(){
-    this.ownerAndApartmentList = await this.ownerService.getAllActiveOwnerAndApartment();
-    this.debitReportList = this.debitManagerService.calculateDebits(this.ownerAndApartmentList, this.debit);
-    console.log(this.debitReportList);
+    this.ownerAndApartmentList =
+      await this.ownerService.getAllActiveOwnerAndApartment();
+    this.debitReportList =
+      this.debitManagerService.calculateDebits(this.ownerAndApartmentList, this.debit);
   }
 
 

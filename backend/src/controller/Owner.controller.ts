@@ -105,5 +105,26 @@ export class OwnerController extends Controller{
         }
     }
 
+    updateBalance = async (req, res) => {
+        const owner = req.body || '';
+        let entities = [];
+        console.log(owner);
+        try {
+            console.log('BALANCE');
+            let entity = await this.repository
+                .createQueryBuilder('owner')
+                .update()
+                .set({ balance: owner.balance })
+                .where("id = :id", { id: owner.id })
+                .execute
+                entities.push(entity);
+            console.log(entities);
+            res.json(entities);
+        } catch (err) {
+            console.error(err);
+            this.handleError(res);
+        }
+    }
+
 
 }

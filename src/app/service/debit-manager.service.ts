@@ -26,8 +26,10 @@ export class DebitManagerService {
     switch (debit.type.id) {
       case 1:
         this.calculateCubicMeterPrice(ownerAndApartmentList);
+        break;
       case 2:
         this.calculateSumDebitPrice(ownerAndApartmentList);
+        break;
     }
     return this.debitReportList;
   }
@@ -56,9 +58,9 @@ export class DebitManagerService {
     for (let i = 0; i < ownerAndApartmentList.length; i++) {
       let actual = ownerAndApartmentList[i];
       this.debitReportList.push({
-        debit: actual.area * pricePerCubicMeter,
+        debit: actual.apartment.area * pricePerCubicMeter,
         balance: actual.balance,
-        newBalance: actual.balance - actual.area * pricePerCubicMeter,
+        newBalance: actual.balance - actual.apartment.area * pricePerCubicMeter,
         name: actual.name,
         area: actual.apartment.area,
         floorAndDoor: actual.apartment.floor.toString() + '/' + actual.apartment.door.toString(),
@@ -70,14 +72,15 @@ export class DebitManagerService {
   create() {
     let ownerList: Owner[] = [];
     let logList: Log[] = [];
-    const now = new Date();
+    const now = new Date().toISOString().slice(0,9);
+    console.log(now);
     this.debitReportList.forEach(debitReport => {
       let owner: Owner = {
         id: debitReport.ownerid,
         name: '',
         active: true,
         balance: debitReport.newBalance,
-        apartment: null
+        apartment: undefined
       };
       ownerList.push(owner);
       logList.push({
@@ -90,8 +93,7 @@ export class DebitManagerService {
       });
     });
     this.logService.createLogs(logList);
-    this.ownerService.updateOwners(ownerList);
-}
+    this.ownerService.updateBalance(ownerList);
   }
 
 }

@@ -57,7 +57,10 @@ export class OwnerFormComponent implements OnInit {
   fillBalance() {
     const id = this.ownerForm.value.apartment.id;
     const ret = this.ownerService.getOldOwnerDebit(id);
-    ret.then(balance => this.ownerForm.patchValue({ balance: Number(balance.toString()) }));
+    let balance;
+    ret.then(balance);
+    console.log(balance);
+    this.ownerForm.setValue({ balance: balance });
     //HELP
   }
 

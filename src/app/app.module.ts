@@ -10,6 +10,8 @@ import { DebitFormComponent } from './debit/debit-form/debit-form.component';
 import { ReportFormComponent } from './report-form/report-form.component';
 import { DebitReportComponent } from './debit/debit-form/debit-report/debit-report.component';
 import { DebitReportEntityComponent } from './debit/debit-form/debit-report/debit-report-entity/debit-report-entity.component';
+import { LogReportComponent } from './report-form/log-report/log-report.component';
+import { ReportEntityComponent } from './report-form/log-report/report-entity/report-entity.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DebitReportEntityComponent } from './debit/debit-form/debit-report/debi
     DebitFormComponent,
     ReportFormComponent,
     DebitReportComponent,
-    DebitReportEntityComponent
+    DebitReportEntityComponent,
+    LogReportComponent,
+    ReportEntityComponent
   ],
   imports: [
     BrowserModule,

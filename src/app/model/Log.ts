@@ -2,7 +2,7 @@ import { Owner } from "./Owner";
 
 export interface Log {
     id: number;
-    date: Date;
+    date: string;
     sum: number;
     actual_balance: number;
     comment: string;

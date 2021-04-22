@@ -1,1 +1,22 @@
-<p>report-form works!</p>
+<div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="reportForm">
+        <label for="startdate">Start Date</label>
+        <input type="date" class="form-control" id="startDate" formControlName="startDate">
+        <label for="enddate">End Date</label>
+        <input type="date" class="form-control" id="endDate" formControlName="endDate">
+        <label for="owner">Owner</label>
+        <select  class="form-control" id="owner" formControlName="owner">
+          <option *ngFor="let owner of ownerList" [ngValue]="owner">{{owner.name}}</option>
+          <option [ngValue]="null">Full Flat/All owner</option>
+        </select>
+        <button type="button" class="btn btn-primary mt-2" (click)="createLogReport()"[disabled]="reportForm.invalid">Log Report</button>
+        <button type="button" class="btn btn-primary mt-2" (click)="createSumReport()"[disabled]="reportForm.invalid">Sum Report</button>
+      </form>
+    </div>
+</div>
+<div>
+<app-report *ngIf="visibleLog" [logList]="logList"></app-report>
+<app-sum-report *ngIf="visibleSum" [sumReportList]="sumReportList"></app-sum-report>
+</div>
+
