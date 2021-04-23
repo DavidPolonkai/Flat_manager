@@ -5,7 +5,7 @@
         <input type="text" class="form-control" id="name" formControlName="name">
         <label for="balance">Balance</label>
         <input disabled type="number" class="form-control" id="balance" formControlName="balance">
-        <label for="uploader">Uploader</label>
+        <label for="apartment">Apartment</label>
         <select (change)="fillBalance()" [compareWith]="compareApartments" class="form-control" id="apartment" formControlName="apartment">
           <option *ngFor="let apartment of apartmentList" [ngValue]="apartment">Emelet: {{apartment.floor}} Ajtó: {{apartment.door}}</option>
         </select>

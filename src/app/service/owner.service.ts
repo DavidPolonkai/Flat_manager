@@ -29,7 +29,7 @@ export class OwnerService {
     return this.http.get<Owner[]>('/api/owners').toPromise();
   }
 
-  private async updateOneBalance(owner: Owner) {
+  async updateOneBalance(owner: Owner) {
     return this.http.put<Owner>('/api/owners/balance', owner).toPromise();
   }
 

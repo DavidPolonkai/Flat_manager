@@ -12,7 +12,7 @@ export class LogService {
     private http: HttpClient
   ) { }
 
-  async createLogs(logList: Log[]) {
+  async createDebitLogs(logList: Log[]) {
     return this.http.post<Log[]>('/api/logs',logList).toPromise();
   }
 
@@ -32,6 +32,10 @@ export class LogService {
   }
   async getSumReportByDates(startDate, endDate){
     const logList: Log[] = await this.getLogsByDates(startDate, endDate);
+  }
+
+  async createDepositLog(log:Log) {
+    return this.http.post<Log>('/api/logs',log).toPromise();
   }
 
   private calculateSumReport(logList: Log[]) {

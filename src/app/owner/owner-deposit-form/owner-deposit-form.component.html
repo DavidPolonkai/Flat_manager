@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="ownerDepositForm">
+        <label for="owner">Name</label>
+        <select (change)="fillCurrentBalance()" class="form-control" id="owner" formControlName="owner">
+            <option *ngFor="let owner of ownerList" [ngValue]="owner">{{owner.name}}</option>
+        </select>
+        <label for="currentBalance">Current Balance</label>
+        <input type="number" class="form-control" id="currentBalance" formControlName="currentBalance">
+        <label for="deposit">Deposit</label>
+        <input (change)="updateCalculatedBalance()" type="number" class="form-control" id="deposit" formControlName="deposit">
+        <label for="newBalance">New Balance</label>
+        <input type="number" class="form-control" id="newBalance" formControlName="newBalance">
+        <button type="button" class="btn btn-primary mt-2" (click)="deposit()"[disabled]="ownerDepositForm.invalid">Deposit</button>
+      </form>
+    </div>
+</div>

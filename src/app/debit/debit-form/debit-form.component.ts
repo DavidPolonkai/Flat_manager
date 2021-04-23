@@ -19,8 +19,8 @@ export class DebitFormComponent implements OnInit {
     id: [], 
     date: [Date.now],
     sum: ['',Validators.required],
-    comment: ['Replace'],
-    type: [Validators.required]
+    comment: ['',Validators.required],
+    type: [null,Validators.required]
   });
 
   availableDebitType: DebitType[];
@@ -41,15 +41,18 @@ export class DebitFormComponent implements OnInit {
   goToDebitReport() {
     this.debit = this.debitForm.value;
     this.visible = true;
+    this.debitForm.disable();
     console.log();
   }
 
   createDebit() {
     this.debitManagerService.create();
+    this.router.navigate(['/']);
   }
 
   cancelDebit() {
-    this.router.navigate(['/']);
+    this.visible = false;
+    this.debitForm.enable();
   }
 
 }

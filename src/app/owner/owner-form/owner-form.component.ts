@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { OwnerService } from '../service/owner.service';
-import { Apartment } from '../model/Apartment';
-import { ApartmentService } from '../service/apartment.service';
+import { OwnerService } from '../../service/owner.service';
+import { Apartment } from '../../model/Apartment';
+import { ApartmentService } from '../../service/apartment.service';
 
 
 @Component({
@@ -14,10 +14,10 @@ import { ApartmentService } from '../service/apartment.service';
 export class OwnerFormComponent implements OnInit {
   ownerForm: FormGroup = this.formBuilder.group({
     id: [], 
-    name: [''],
+    name: ['',Validators.required],
     active: [true],
-    balance: [0, Validators.min(0)],
-    apartment: []
+    balance: {value: 0, disabled: true},
+    apartment: [Validators.required]
   });
 
   apartmentList: Apartment[];
@@ -40,6 +40,7 @@ export class OwnerFormComponent implements OnInit {
 
   addOwner() {
     const owner = this.ownerForm.value;
+    owner.balance = this.ownerForm.get('balance').value;
     console.log(owner);
     this.ownerService.addOwner(owner);
     this.router.navigateByUrl('/');
@@ -57,7 +58,9 @@ export class OwnerFormComponent implements OnInit {
   async fillBalance() {
     const id = this.ownerForm.value.apartment.id;
     const oldBalance = await this.ownerService.getOldOwnerDebit(id);
-    this.ownerForm.patchValue({ balance: oldBalance["balance"] });
+    if (oldBalance < 0) {
+      this.ownerForm.patchValue({ balance: oldBalance["balance"] });
+    }
   }
 
 
