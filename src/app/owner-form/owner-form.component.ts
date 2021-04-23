@@ -16,7 +16,7 @@ export class OwnerFormComponent implements OnInit {
     id: [], 
     name: [''],
     active: [true],
-    balance: [0, Validators.min(1)],
+    balance: [0, Validators.min(0)],
     apartment: []
   });
 
@@ -54,15 +54,12 @@ export class OwnerFormComponent implements OnInit {
     console.log(this.apartmentList);
   }
 
-  fillBalance() {
+  async fillBalance() {
     const id = this.ownerForm.value.apartment.id;
-    const ret = this.ownerService.getOldOwnerDebit(id);
-    let balance;
-    ret.then(balance);
-    console.log(balance);
-    this.ownerForm.setValue({ balance: balance });
-    //HELP
+    const oldBalance = await this.ownerService.getOldOwnerDebit(id);
+    this.ownerForm.patchValue({ balance: oldBalance["balance"] });
   }
+
 
 
 }
