@@ -1,5 +1,5 @@
-<div class="col-md-10">
-<div class="row">
+<div class="col-md-10 justify-content-center">
+<div class="row justify-content-center">
     <div class="col-md-2">
         name
 
@@ -23,12 +23,10 @@
         newBalance
     </div>
 </div>
-<div class="col-md-12" *ngFor="let debitReport of debitReportList">
+ <div *ngFor="let debitReport of debitReportList">
     
-    <app-debit-report-entity [debitReport]="debitReport">
+    <app-debit-report-entity [debitReport]="debitReport"></app-debit-report-entity>
 
-    </app-debit-report-entity>
-
-    </div>
+</div>
    
 </div>

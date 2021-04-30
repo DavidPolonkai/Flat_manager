@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-6">
       <form [formGroup]="reportForm">
         <label for="startdate">Start Date</label>
@@ -10,13 +10,13 @@
           <option *ngFor="let owner of ownerList" [ngValue]="owner">{{owner.name}}</option>
           <option [ngValue]="null">Full Flat/All owner</option>
         </select>
-        <button type="button" class="btn btn-primary mt-2" (click)="createLogReport()"[disabled]="reportForm.invalid">Log Report</button>
-        <button type="button" class="btn btn-primary mt-2" (click)="createSumReport()"[disabled]="reportForm.invalid">Sum Report</button>
+        <button type="button" class="btn btn-primary mt-2" (click)="createLogReport()" [disabled]="reportForm.invalid">Log Report</button>
+        <button type="button" class="btn btn-primary mt-2" (click)="createSumReport()" [disabled]="reportForm.invalid">Sum Report</button>
       </form>
     </div>
 </div>
 <div>
-<app-report *ngIf="visibleLog" [logList]="logList"></app-report>
+<app-log-report *ngIf="visibleLog" [logList]="logList"></app-log-report>
 <app-sum-report *ngIf="visibleSum" [sumReportList]="sumReportList"></app-sum-report>
 </div>
 

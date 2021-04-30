@@ -13,7 +13,6 @@ export function getRouter() {
 
     router.get('/owners', ownerController.getAll);
     router.get('/owners/old/:id', ownerController.getOldOwnerDebit);
-    router.get('/owners/set/balance/area', ownerController.setBalanceByArea);
     router.get('/ownersandapartment/active',ownerController.getAllActiveAndApartment)
     router.get('/owners/:id', ownerController.getOne);
     router.post('/owners', ownerController.create);

@@ -74,23 +74,6 @@ export class OwnerController extends Controller{
     }
 
 
-
-    setBalanceByArea = async (req, res) => {
-        const basePrice:Number = req.body;
-        try {
-            //update owner o SET balance=o.balance-(select a.area from apartment a where a.id=o.apartmentId)*213 WHERE o.active=1
-            //await this.repository
-            //    .createQueryBuilder()
-            //   .update()
-            //    .set({balance: basePrice*1})
-            
-            
-        }catch(err){
-            console.error(err);
-            this.handleError(res);
-        }
-    }
-
     getAllActiveAndApartment = async (req, res) => {
         try {
             const entities = await this.repository.createQueryBuilder("owner")

@@ -1,0 +1,57 @@
+<div class="col-md-10">
+    <div class="row">
+        <h2>Block</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            OpeningDebit
+         </div>
+         <div class="col-md-2">
+            ClosingDebit
+         </div>
+         <div class="col-md-2">
+             Deposits
+         </div>
+         <div class="col-md-2">
+             Expenses
+         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            {{blockSumReport.openBalance}}
+         </div>
+         <div class="col-md-2">
+            {{blockSumReport.closeBalance}}
+         </div>
+         <div class="col-md-2">
+             {{blockSumReport.deposits}}
+         </div>
+         <div class="col-md-2">
+             {{blockSumReport.expenses}}
+         </div>
+    </div>
+    <div class="row">
+        <h2>Owners</h2>
+    </div>
+  <div class="row">
+      <div class="col-md-2">
+          Name
+      </div>
+      <div class="col-md-2">
+         OpeningBalance
+      </div>
+      <div class="col-md-2">
+         ClosingBalance
+      </div>
+      <div class="col-md-2">
+          Deposits
+      </div>
+      <div class="col-md-2">
+          Expenses
+      </div>
+  </div>
+  <div class="col-md-12" *ngFor="let sumReport of sumReportList">      
+      <app-sum-report-entity [sumReport]="sumReport"></app-sum-report-entity>
+  </div>
+</div>
+  

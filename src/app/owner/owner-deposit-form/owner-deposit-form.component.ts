@@ -39,12 +39,12 @@ export class OwnerDepositFormComponent implements OnInit {
   async deposit() {
     const formValue = this.ownerDepositForm.value;
     await this.depositManagerService.addDebit(formValue.owner, formValue.deposit);
-
+    this.router.navigate(['report-form']);
   }
 
   updateCalculatedBalance() {
     const formValue = this.ownerDepositForm.value;
     const newBalance = formValue.owner.balance  + formValue.deposit;
-    this.ownerDepositForm.patchValue({ newBalance: newBalance});
+    this.ownerDepositForm.patchValue({ newBalance: newBalance });
   }
 }

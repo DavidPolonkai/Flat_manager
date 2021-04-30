@@ -7,12 +7,14 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OwnerFormComponent } from './owner/owner-form/owner-form.component';
 import { DebitFormComponent } from './debit/debit-form/debit-form.component';
-import { ReportFormComponent } from './report-form/report-form.component';
+import { ReportFormComponent } from './reports/report-form/report-form.component';
 import { DebitReportComponent } from './debit/debit-form/debit-report/debit-report.component';
 import { DebitReportEntityComponent } from './debit/debit-form/debit-report/debit-report-entity/debit-report-entity.component';
-import { LogReportComponent } from './report-form/log-report/log-report.component';
-import { ReportEntityComponent } from './report-form/log-report/report-entity/report-entity.component';
+import { LogReportComponent } from './reports/report-form/log-report/log-report.component';
+import { LogReportEntityComponent } from './reports/report-form/log-report/log-report-entity/log-report-entity.component';
 import { OwnerDepositFormComponent } from './owner/owner-deposit-form/owner-deposit-form.component';
+import { ReportSumComponent } from './reports/report-form/sum-report/sum-report.component';
+import { SumReportEntityComponent } from './reports/report-form/sum-report/sum-report-entity/sum-report-entity.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,10 @@ import { OwnerDepositFormComponent } from './owner/owner-deposit-form/owner-depo
     DebitReportComponent,
     DebitReportEntityComponent,
     LogReportComponent,
-    ReportEntityComponent,
-    OwnerDepositFormComponent
+    LogReportEntityComponent,
+    SumReportEntityComponent,
+    OwnerDepositFormComponent,
+    ReportSumComponent
   ],
   imports: [
     BrowserModule,
