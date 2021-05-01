@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+    <div class="col-md-2 border rounded bg-info">
+        Name
+    </div>
+    <div class="col-md-2 border rounded bg-info">
+        Floor and door
+    </div>
+    <div class="col-md-2 border rounded bg-info">
+        Area
+    </div>
+    <div class="col-md-2 border rounded bg-info">
+        Balance
+    </div>
+    <div class="col-md-2 border rounded bg-info">
+        Debit
+    </div>
+    <div class="col-md-2 border rounded bg-info">
+        NewBalance
+    </div>
+</div>
+<div *ngFor="let debitReport of debitReportList">
+    <app-debit-report-entity [debitReport]="debitReport"></app-debit-report-entity>
+</div>
+   

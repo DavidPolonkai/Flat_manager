@@ -1,0 +1,70 @@
+{
+   "name": "flat_manager",
+   "version": "0.0.0",
+   "description": "This is an assignment for Infosystems.",
+   "main": "index.js",
+   "scripts": {
+      "ng": "ng",
+      "start": "gnome-terminal --command='cd backend && ts-node index.ts && gnome-terminal --command=`ng serve`'",
+      "start-frontend": "ng serve",
+      "start-backend": "cd backend && ts-node index.ts",
+      "build": "ng build",
+      "test": "ng test",
+      "lint": "ng lint",
+      "e2e": "ng e2e"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/DavidPolonkai/Flat_manager.git"
+   },
+   "keywords": [
+      "flat_manager",
+      "assignment"
+   ],
+   "author": "Polonkai Dávid",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/DavidPolonkai/Flat_manager/issues"
+   },
+   "homepage": "https://github.com/DavidPolonkai/Flat_manager#readme",
+   "private": true,
+   "dependencies": {
+      "@angular/animations": "~11.1.2",
+      "@angular/common": "~11.1.2",
+      "@angular/compiler": "~11.1.2",
+      "@angular/core": "~11.1.2",
+      "@angular/forms": "~11.1.2",
+      "@angular/platform-browser": "~11.1.2",
+      "@angular/platform-browser-dynamic": "~11.1.2",
+      "@angular/router": "~11.1.2",
+      "@types/express": "^4.17.11",
+      "body-parser": "^1.19.0",
+      "bootstrap": "^4.6.0",
+      "express": "^4.17.1",
+      "mysql": "^2.18.1",
+      "reflect-metadata": "^0.1.13",
+      "rxjs": "~6.6.0",
+      "tslib": "^2.0.0",
+      "typeorm": "^0.2.31",
+      "zone.js": "~0.11.3"
+   },
+   "devDependencies": {
+      "@angular-devkit/build-angular": "~0.1101.4",
+      "@angular/cli": "~11.1.4",
+      "@angular/compiler-cli": "~11.1.2",
+      "@types/jasmine": "~3.6.0",
+      "@types/node": "^12.20.10",
+      "codelyzer": "^6.0.0",
+      "jasmine-core": "~3.6.0",
+      "jasmine-spec-reporter": "~5.0.0",
+      "karma": "~5.2.0",
+      "karma-chrome-launcher": "~3.1.0",
+      "karma-coverage": "~2.0.3",
+      "karma-jasmine": "~4.0.0",
+      "karma-jasmine-html-reporter": "^1.5.0",
+      "protractor": "~7.0.0",
+      "ts-node": "~8.3.0",
+      "tslint": "~6.1.0",
+      "typescript": "~4.1.2"
+   }
+}
