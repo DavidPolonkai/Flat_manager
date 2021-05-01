@@ -3,7 +3,7 @@
 This angular project is an assignment for Information System Building subject.
 
 ## Manual
-All the commands are have to be executed in the project directory
+All the commands are have to be executed in the project directory.\
 First install the dependencies with:\
 `npm install`\
 \
