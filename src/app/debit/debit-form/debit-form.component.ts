@@ -35,19 +35,17 @@ export class DebitFormComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.availableDebitType = debitTypeConst;
-    console.log(this.availableDebitType);
   }
 
   goToDebitReport() {
     this.debit = this.debitForm.value;
     this.visible = true;
     this.debitForm.disable();
-    console.log();
   }
 
   createDebit() {
     this.debitManagerService.create();
-    this.router.navigate(['/']);
+    this.router.navigate(['report-form']);
   }
 
   cancelDebit() {

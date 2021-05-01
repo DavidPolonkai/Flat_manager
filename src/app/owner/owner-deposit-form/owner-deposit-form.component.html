@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-6 border rounded bg-light">
       <form [formGroup]="ownerDepositForm">
         <label for="owner">Name</label>
         <select (change)="fillCurrentBalance()" class="form-control" id="owner" formControlName="owner">
@@ -11,7 +11,7 @@
         <input (change)="updateCalculatedBalance()" type="number" class="form-control" id="deposit" formControlName="deposit">
         <label for="newBalance">New Balance</label>
         <input type="number" class="form-control" id="newBalance" formControlName="newBalance">
-        <button type="button" class="btn btn-primary mt-2" (click)="deposit()"[disabled]="ownerDepositForm.invalid">Deposit</button>
+        <button type="button" class="btn btn-primary mt-2 mr-2 mb-2" (click)="deposit()"[disabled]="ownerDepositForm.invalid">Deposit</button>
       </form>
     </div>
 </div>

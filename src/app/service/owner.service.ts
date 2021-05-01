@@ -37,7 +37,6 @@ export class OwnerService {
     let ex;
     let ret=[];
     for (let i = 0; i < ownerList.length; i++) {
-      console.log(ownerList[i]);
       ex = await this.updateOneBalance(ownerList[i]);
       ret.push(ex);
     } 

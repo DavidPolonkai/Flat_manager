@@ -73,7 +73,6 @@ export class DebitManagerService {
     let ownerList: Owner[] = [];
     let logList: Log[] = [];
     const now = new Date().toISOString().slice(0,10);
-    console.log(now);
     this.debitReportList.forEach(debitReport => {
       let owner: Owner = {
         id: debitReport.ownerid,

@@ -1,7 +1,6 @@
 import { getRepository } from "typeorm";
 import { Controller } from "./Controller";
 import { Owner } from "../entity/Owner"
-import { Apartment } from "../entity/Apartment";
 
 
 export class OwnerController extends Controller{
@@ -39,7 +38,6 @@ export class OwnerController extends Controller{
             else {
                 balance = oldOwner.balance;
             }
-            console.log(balance);
             res.json({ balance });
         } catch (err) {
             console.error(err);
@@ -80,7 +78,6 @@ export class OwnerController extends Controller{
             .leftJoinAndMapOne("owner.apartment", "owner.apartment","apartment", "apartment.id=owner.apartmentId")
             .where("owner.active=1")
             .getMany();
-            console.log(entities);
             res.json(entities);
         }catch(err){
             console.error(err);
@@ -90,15 +87,13 @@ export class OwnerController extends Controller{
 
     updateBalance = async (req, res) => {
         const owner = req.body || '';
-        console.log(owner);
         try {
             let entity = await this.repository
                 .createQueryBuilder('owner')
                 .update()
                 .set({ balance: owner.balance })
                 .where("id = :id", { id: owner.id })
-                .execute()
-            console.log(entity);
+               .execute()
             res.json(entity);
         } catch (err) {
             console.error(err);

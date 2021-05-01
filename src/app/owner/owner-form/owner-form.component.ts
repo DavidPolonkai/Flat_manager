@@ -41,9 +41,8 @@ export class OwnerFormComponent implements OnInit {
   addOwner() {
     const owner = this.ownerForm.value;
     owner.balance = this.ownerForm.get('balance').value;
-    console.log(owner);
     this.ownerService.addOwner(owner);
-    this.router.navigateByUrl('/');
+    this.router.navigate(['/report-form']);
   }
 
   compareApartments(apartment1: Apartment, apartment2: Apartment):boolean {
@@ -52,7 +51,6 @@ export class OwnerFormComponent implements OnInit {
 
   async ngOnInit() {
     this.apartmentList = await this.apartmentService.getApartments();
-    console.log(this.apartmentList);
   }
 
   async fillBalance() {

@@ -3,7 +3,9 @@
 This angular project is an assignment for Information System Building subject.\
 
 ## Manual
-
+First install the dependencies with:\
+`npm install`\
+\
 To start the application first start the server with the following command:\
 `npm run start-backend`\
 \
@@ -25,8 +27,8 @@ In case the 4200 port is not in use you can visit the website in [http://localho
 - [x] Owner should able to deposit sum 
 - [x] Debit making (by area or by sum) price
 ### Periodic reports (dates declared by the user)
-- [x] Opening debit, closing debit and log by owner
-- [x] Opening debit, closing debit and log by full block of flat
+- [x] Opening debit, closing debit and log of an owner
+- [x] Opening debit, closing debit and log of the full block of flats
 - [x] Opening balance, deposit and debit sums, closing balance of an owner
 - [x] Opening balance(debit), all deposit and debit (log) and closing balance(debit) of the block  
 

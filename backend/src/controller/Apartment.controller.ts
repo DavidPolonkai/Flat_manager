@@ -1,6 +1,5 @@
 import { getRepository } from "typeorm";
 import { Apartment } from "../entity/Apartment";
-import { Owner } from "../entity/Owner";
 import { Controller } from "./Controller";
 
 export class ApartmentController extends Controller{
@@ -15,7 +14,6 @@ export class ApartmentController extends Controller{
                 .innerJoin('owner', "o", "o.apartmentId=apartment.id")
                 .where("o.active=1")
                 .getMany();
-            console.log(entities);
             res.json(entities);
         } catch (err) {
             

@@ -4,7 +4,6 @@ import { DebitFormComponent } from './debit/debit-form/debit-form.component';
 import { OwnerDepositFormComponent } from './owner/owner-deposit-form/owner-deposit-form.component';
 import { OwnerFormComponent } from './owner/owner-form/owner-form.component';
 import { ReportFormComponent } from './reports/report-form/report-form.component';
-import { ReportSumComponent } from './reports/report-form/sum-report/sum-report.component';
 
 const routes: Routes = [
   {

@@ -1,33 +1,43 @@
-<div class="col-md-10">
-    <div class="row">
-        Opening Debit: {{openingDebit}}     
+<div class="col-md-10 mx-auto">
+       
+    <div class="row text-center justify-content-center">
+        <h3>Summary</h3>
     </div>
-    <div class="row">
-        Closing Debit: {{closingDebit}}
+    <div class="row text-center justify-content-center">
+       <div class="col-md-2 border rounded bg-info">
+            OpeningDebit
+        </div>
+        <div class="col-md-2 border rounded bg-info">
+            ClosingDebit
+        </div>
     </div>
-    <div class="row">
-        <div class="col-md-2">
+    <div class="row justify-content-center">
+        <div class="col-md-2 border"> 
+            {{openingDebit}}
+        </div>
+        <div class="col-md-2 border">
+            {{closingDebit}}
+        </div>
+    </div>
+    <div class="row text-center justify-content-center mt-5">
+        <div class="col-md-2 border rounded bg-info">
             Date
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 border rounded bg-info">
            Sum
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 border rounded bg-info">
             Comment
-    
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 border rounded bg-info">
             Actual balance
-    
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 border rounded bg-info">
             name
         </div>
     </div>
-    <div class="col-md-12" *ngFor="let log of logList">
-        
+    <div *ngFor="let log of logList">
         <app-log-report-entity [log]="log"></app-log-report-entity>
-    
     </div>
 </div>
     

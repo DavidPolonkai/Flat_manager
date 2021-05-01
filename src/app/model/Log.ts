@@ -8,3 +8,8 @@ export interface Log {
     comment: string;
     owner: Owner;
 }
+
+export interface DebitByPerson{
+    openingDebit: number;
+    closingDebit: number
+}

@@ -21,8 +21,6 @@ export class DebitReportComponent implements OnInit {
 
   constructor(
     private ownerService: OwnerService,
-    private router: Router,
-    private apartmentService: ApartmentService,
     private debitManagerService: DebitManagerService
   ) { }
 

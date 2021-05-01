@@ -13,9 +13,10 @@ import { OwnerService } from '../../service/owner.service';
 })
 export class ReportFormComponent implements OnInit {
   date = new Date();
+  dateMinusOneMonth = new Date(this.date.getFullYear(),this.date.getMonth()-1,this.date.getDate())
   reportForm: FormGroup = this.formBuilder.group({
     endDate: [this.date.toISOString().slice(0,10),[Validators.required]],
-    startDate: [,[Validators.required]],
+    startDate: [this.dateMinusOneMonth.toISOString().slice(0,10),[Validators.required]],
     owner: []
   });
   ownerList:Owner[] =[];

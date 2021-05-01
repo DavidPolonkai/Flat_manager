@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Log } from '../model/Log';
 import { Owner } from '../model/Owner';
 import { SumReport } from '../model/SumReport';
+import { DebitByPerson } from '../model/Log';
 
 @Injectable({
   providedIn: 'root'
@@ -71,40 +72,42 @@ export class LogService {
   }
 
   calculateDebits(logList: Log[]) {
-    
-    const length = logList.length-1;
+    const length = logList.length;
+    if (length == 0) return [NaN, NaN];
     const minDate = logList[0].date;
-    const maxDate = logList[length].date;
-    let debit: number[] = [0,0];
+    const maxDate = logList[length - 1].date;
+    let debitByPerson: DebitByPerson[] = [];
+    let debit: number[] = [0, 0];
     let i = 0;
-    console.log(logList.length);
-    while (logList[i].date == minDate && i<logList.length-1) {
-      console.log(logList[i].date);
-      if (logList[i].actual_balance < 0) {
-        debit[0] += logList[i].actual_balance;
-      }
+    while (i < length && logList[i].date == minDate) {
+        if (debitByPerson[logList[i].owner.id] == null ) {
+          debitByPerson[logList[i].owner.id] = {
+            openingDebit: logList[i].actual_balance < 0 ? logList[i].actual_balance : 0,
+            closingDebit: -1
+          } 
+        } 
       i++;
     }
-    i = length;
-    while (logList[i].date == maxDate && i<logList.length-1) {
-      if (logList[i].actual_balance < 0) {
-        debit[1] += logList[i].actual_balance;
+    i = length-1;
+    while (i >= 0 && logList[i].date == maxDate) {
+      if (debitByPerson[logList[i].owner.id] == null) {
+        debitByPerson[logList[i].owner.id] = {
+          openingDebit: 0,
+          closingDebit: -1
+        }
+      }
+      if (debitByPerson[logList[i].owner.id].closingDebit < 0) {
+        debitByPerson[logList[i].owner.id].closingDebit = logList[i].actual_balance < 0 ? -logList[i].actual_balance : -1;
       }
       i--;
     }
-    if (debit[1] > 0) {
-      debit[1] = 0;
-    }
-    else {
-      debit[1] *= -1;
-    }
-    if (debit[0] > 0) {
-      debit[0] = 0;
-    }
-    else {
-      debit[0] *= -1;
-    }
-
+    debitByPerson.filter(function (de){
+      return de != null;
+    })
+    debitByPerson.forEach(de => {
+      debit[0] += de.openingDebit;
+      debit[1] += de.closingDebit > 0 ? de.closingDebit : 0;
+    });
     return debit;
   }
 

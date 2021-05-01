@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { O_NOFOLLOW } from 'node:constants';
-import { UsingJoinTableIsNotAllowedError } from 'typeorm';
 import { Log } from '../model/Log';
 import { Owner } from '../model/Owner';
 import { LogService } from './log.service';

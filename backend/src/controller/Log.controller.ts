@@ -1,4 +1,4 @@
-import { Between, getRepository, MoreThan } from "typeorm";
+import { Between, getRepository} from "typeorm";
 import { Log } from "../entity/Log";
 import { Controller } from "./Controller";
 
@@ -19,7 +19,6 @@ export class LogController extends Controller{
                     date: 'ASC'
                 }
             });
-            console.log(entities);
             res.json(entities);
         } catch (err) {
             
@@ -32,7 +31,6 @@ export class LogController extends Controller{
         const start = req.params.startDate || '';
         const end = req.params.endDate || '';
         const ownerid = req.params.ownerId || '';
-        console.log(ownerid);
         try {
             const entities = await this.repository.find({
                 where: {

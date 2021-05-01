@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { LogService } from 'src/app/service/log.service';
 import { Log } from '../../../model/Log';
 @Component({
@@ -6,7 +6,7 @@ import { Log } from '../../../model/Log';
   templateUrl: './log-report.component.html',
   styleUrls: ['./log-report.component.css']
 })
-export class LogReportComponent implements OnInit {
+export class LogReportComponent implements OnChanges {
 
   @Input()
   logList: Log[];
@@ -15,11 +15,10 @@ export class LogReportComponent implements OnInit {
 
   constructor(private logService: LogService) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     const debits = this.logService.calculateDebits(this.logList);
     this.openingDebit = debits[0];
     this.closingDebit = debits[1];
-    console.log(this.logList);
   }
 
 

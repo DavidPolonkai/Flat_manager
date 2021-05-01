@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges} from '@angular/core';
 import { SumReport } from 'src/app/model/SumReport';
 
 @Component({
@@ -6,14 +6,14 @@ import { SumReport } from 'src/app/model/SumReport';
   templateUrl: './sum-report.component.html',
   styleUrls: ['./sum-report.component.css']
 })
-export class ReportSumComponent implements OnInit {
+export class ReportSumComponent implements OnChanges {
   @Input()
   sumReportList: SumReport[];
   blockSumReport: SumReport; 
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.blockSumReport = this.sumReportList.pop();
   }
 
