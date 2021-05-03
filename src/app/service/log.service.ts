@@ -82,7 +82,7 @@ export class LogService {
     while (i < length && logList[i].date == minDate) {
         if (debitByPerson[logList[i].owner.id] == null ) {
           debitByPerson[logList[i].owner.id] = {
-            openingDebit: logList[i].actual_balance < 0 ? logList[i].actual_balance : 0,
+            openingDebit: logList[i].actual_balance < 0 ? -logList[i].actual_balance : 0,
             closingDebit: -1
           } 
         } 
