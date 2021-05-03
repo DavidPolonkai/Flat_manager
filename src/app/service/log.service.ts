@@ -36,6 +36,18 @@ export class LogService {
     return this.http.post<Log>('/api/logs',log).toPromise();
   }
 
+  async moveInLog(owner: Owner) {
+    const log = {
+      date: new Date().toISOString().slice(0, 10),
+      sum: owner.balance,
+      actual_balance: owner.balance,
+      comment: "Moving in",
+      owner: owner,
+      id: null
+    }
+    return this.http.post<Log>('/api/logs', log).toPromise();
+  }
+
   private calculateSumReport(logList: Log[]) {
     let sumReportList: SumReport[] = [];
     logList.forEach(log => {
@@ -79,8 +91,10 @@ export class LogService {
     let debitByPerson: DebitByPerson[] = [];
     let debit: number[] = [0, 0];
     let i = 0;
-    while (i < length && logList[i].date == minDate) {
-        if (debitByPerson[logList[i].owner.id] == null ) {
+
+    while (i < length && logList[i].date == minDate ) {
+      console.log(logList[i]);
+        if (debitByPerson[logList[i].owner.id] == null && logList[i].owner.active) {
           debitByPerson[logList[i].owner.id] = {
             openingDebit: logList[i].actual_balance < 0 ? -logList[i].actual_balance : 0,
             closingDebit: -1
@@ -89,15 +103,15 @@ export class LogService {
       i++;
     }
     i = length-1;
-    while (i >= 0 && logList[i].date == maxDate) {
+    while (i >= 0 && logList[i].date == maxDate && logList[i].owner.active) {
       if (debitByPerson[logList[i].owner.id] == null) {
         debitByPerson[logList[i].owner.id] = {
           openingDebit: 0,
           closingDebit: -1
         }
       }
-      if (debitByPerson[logList[i].owner.id].closingDebit < 0) {
-        debitByPerson[logList[i].owner.id].closingDebit = logList[i].actual_balance < 0 ? -logList[i].actual_balance : -1;
+      if (debitByPerson[logList[i].owner.id].closingDebit == -1) {
+        debitByPerson[logList[i].owner.id].closingDebit = logList[i].actual_balance < 0 ? -logList[i].actual_balance : 0;
       }
       i--;
     }
@@ -105,6 +119,7 @@ export class LogService {
       return de != null;
     })
     debitByPerson.forEach(de => {
+      console.log(de);
       debit[0] += de.openingDebit;
       debit[1] += de.closingDebit > 0 ? de.closingDebit : 0;
     });

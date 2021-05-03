@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Owner } from '../model/Owner';
+import { LogService } from './log.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OwnerService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+  private http: HttpClient,
+  private logService: LogService
+  ) { }
 
   async addOwner(owner) {
+    this.logService.moveInLog(owner);
     return this.http.post<Owner>('/api/owners', owner).toPromise();
+    
   }
 
   async getOldOwnerDebit(id) { 

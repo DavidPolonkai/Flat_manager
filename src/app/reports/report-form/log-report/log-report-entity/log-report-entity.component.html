@@ -1,17 +1,17 @@
-<div class="row justify-content-center">
-    <div class="col-md-2 border ">
+<div class="row justify-content-center" [ngClass]="{'text-muted': !this.log.owner.active}">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.log.owner.active}">
         {{this.log.date}}
     </div>
-    <div class="col-md-2 border">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.log.owner.active}">
         {{this.log.sum}}
     </div>
-    <div class="col-md-2 border">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.log.owner.active}">
         {{this.log.comment}}
     </div>
-    <div class="col-md-2 border">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.log.owner.active}">
         {{this.log.actual_balance}}
     </div>
-    <div class="col-md-2 border">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.log.owner.active}">
         {{this.log.owner.name}}
     </div>
 </div>

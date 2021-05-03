@@ -3,7 +3,7 @@
       <form [formGroup]="ownerDepositForm">
         <label for="owner">Name</label>
         <select (change)="fillCurrentBalance()" class="form-control" id="owner" formControlName="owner">
-            <option *ngFor="let owner of ownerList" [ngValue]="owner">{{owner.name}}</option>
+            <option *ngFor="let owner of ownerList" [ngValue]="owner" [ngClass]="{'text-muted': !owner.active}">{{owner.name}}</option>
         </select>
         <label for="currentBalance">Current Balance</label>
         <input type="number" class="form-control" id="currentBalance" formControlName="currentBalance">

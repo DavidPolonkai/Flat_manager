@@ -10,7 +10,6 @@ export class OwnerController extends Controller{
     
     create = async (req, res) => {
         const owner: Owner = req.body
-        
         const entity = this.repository.create(req.body);
         try {
             this.disOwn(owner);

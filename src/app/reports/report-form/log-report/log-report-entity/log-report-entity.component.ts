@@ -9,7 +9,7 @@ import { Log } from '../../../../model/Log';
 export class LogReportEntityComponent implements OnInit {
 
   @Input()
-    log: Log;
+  log: Log;
 
   constructor() { }
 

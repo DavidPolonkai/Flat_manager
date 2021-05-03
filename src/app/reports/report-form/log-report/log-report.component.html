@@ -1,14 +1,11 @@
 <div class="col-md-10 mx-auto">
        
     <div class="row text-center justify-content-center">
-        <h3>Summary</h3>
-    </div>
-    <div class="row text-center justify-content-center">
        <div class="col-md-2 border rounded bg-info">
-            OpeningDebit
+            Opening Debit*
         </div>
         <div class="col-md-2 border rounded bg-info">
-            ClosingDebit
+            Closing Debit**
         </div>
     </div>
     <div class="row justify-content-center">
@@ -19,7 +16,12 @@
             {{closingDebit}}
         </div>
     </div>
+    <div class="row text-center justify-content-center small">*The Opening Debit is the sum of the first log entry balance of an active owner</div>
+    <div class="row text-center justify-content-center small">**The Closing Debit is the sum of the last log entry balance of an active owner</div>
     <div class="row text-center justify-content-center mt-5">
+        <h3>Logs</h3>
+    </div>
+    <div class="row text-center justify-content-center mt-3">
         <div class="col-md-2 border rounded bg-info">
             Date
         </div>
@@ -33,7 +35,7 @@
             Actual balance
         </div>
         <div class="col-md-2 border rounded bg-info">
-            name
+            Name
         </div>
     </div>
     <div *ngFor="let log of logList">

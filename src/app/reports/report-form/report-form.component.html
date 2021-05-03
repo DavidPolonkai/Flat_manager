@@ -7,7 +7,7 @@
         <input type="date" class="form-control" id="endDate" formControlName="endDate">
         <label for="owner">Owner</label>
         <select  class="form-control" id="owner" formControlName="owner">
-          <option *ngFor="let owner of ownerList" [ngValue]="owner">{{owner.name}}</option>
+          <option *ngFor="let owner of ownerList" [ngValue]="owner" [ngClass]="{'text-muted': !owner.active}">{{owner.name}}</option>
           <option [ngValue]="null">Full Flat/All owner</option>
         </select>
         <button type="button" class="btn btn-primary mt-2 mr-2 mb-2" (click)="createLogReport()" [disabled]="reportForm.invalid">Log Report</button>
