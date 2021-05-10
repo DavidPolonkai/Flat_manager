@@ -14,9 +14,9 @@ export class OwnerService {
   ) { }
 
   async addOwner(owner) {
+    const result = this.http.post<Owner>('/api/owners', owner).toPromise(); 
     this.logService.moveInLog(owner);
-    return this.http.post<Owner>('/api/owners', owner).toPromise();
-    
+    return result;
   }
 
   async getOldOwnerDebit(id) { 

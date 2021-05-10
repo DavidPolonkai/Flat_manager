@@ -6,7 +6,7 @@
         <label for="balance">Balance</label>
         <input disabled type="number" class="form-control" id="balance" formControlName="balance">
         <label for="apartment">Apartment</label>
-        <select (change)="fillBalance()" [compareWith]="compareApartments" class="form-control" id="apartment" formControlName="apartment">
+        <select (change)="onChanges()" [compareWith]="compareApartments" class="form-control" id="apartment" formControlName="apartment">
           <option *ngFor="let apartment of apartmentList" [ngValue]="apartment">Emelet: {{apartment.floor}} Ajtó: {{apartment.door}}</option>
         </select>
         <button type="button" class="btn btn-primary mt-2 mr-2 mb-2" (click)="addOwner()"[disabled]="ownerForm.invalid">Add or replace owner</button>

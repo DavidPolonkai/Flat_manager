@@ -16,7 +16,7 @@
     </div>
 </div>
 <div class="pt-3">
-<app-log-report *ngIf="visibleLog" [logList]="logList"></app-log-report>
+<app-log-report *ngIf="visibleLog" [logList]="logList" [isOwnerOnly]="isOwnerOnly"></app-log-report>
 <app-sum-report *ngIf="visibleSum" [sumReportList]="sumReportList"></app-sum-report>
 </div>
 

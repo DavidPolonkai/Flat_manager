@@ -53,13 +53,13 @@ export class LogService {
     logList.forEach(log => {
       if (sumReportList[log.owner.id] != null) {
         sumReportList[log.owner.id].closeBalance = log.actual_balance;
-        sumReportList[log.owner.id].expenses += (log.sum < 0 ? -log.sum : 0);
-        sumReportList[log.owner.id].deposits += (log.sum > 0 ? log.sum : 0);
+        sumReportList[log.owner.id].expenses += (log.sum < 0 && log.comment!="Moving in" ? -log.sum : 0);
+        sumReportList[log.owner.id].deposits += (log.sum > 0 && log.comment!="Moving in" ? log.sum : 0);
       } else {
         sumReportList[log.owner.id] = {
           owner: log.owner,
-          expenses: (log.sum < 0 ? -log.sum : 0),
-          deposits: (log.sum > 0 ? log.sum : 0),
+          expenses: (log.sum < 0 && log.comment!="Moving in" ? -log.sum : 0),
+          deposits: (log.sum > 0 && log.comment!="Moving in" ? log.sum : 0),
           openBalance: log.actual_balance,
           closeBalance: log.actual_balance
         }
@@ -75,15 +75,17 @@ export class LogService {
     sumReportList = sumReportList.filter(function (sumReport) {
       blockSumReport.expenses += sumReport.expenses
       blockSumReport.deposits += sumReport.deposits
-      blockSumReport.openBalance += (sumReport.openBalance < 0 ? -sumReport.openBalance : 0);
-      blockSumReport.closeBalance += (sumReport.closeBalance < 0 ? -sumReport.closeBalance : 0);
+      if (sumReport.owner.active) {
+        blockSumReport.openBalance += (sumReport.openBalance < 0 ? -sumReport.openBalance : 0);
+        blockSumReport.closeBalance += (sumReport.closeBalance < 0 ? -sumReport.closeBalance : 0);
+      }
       return sumReport != null;
     });
     sumReportList.push(blockSumReport);
     return sumReportList;
   }
 
-  calculateDebits(logList: Log[]) {
+  calculateDebits(logList: Log[],ownerOnly: boolean) {
     const length = logList.length;
     if (length == 0) return [NaN, NaN];
     const minDate = logList[0].date;
@@ -92,9 +94,9 @@ export class LogService {
     let debit: number[] = [0, 0];
     let i = 0;
 
-    while (i < length && logList[i].date == minDate ) {
+    while (i < length) {
       console.log(logList[i]);
-        if (debitByPerson[logList[i].owner.id] == null && logList[i].owner.active) {
+        if (debitByPerson[logList[i].owner.id] == null && (logList[i].owner.active||ownerOnly)) {
           debitByPerson[logList[i].owner.id] = {
             openingDebit: logList[i].actual_balance < 0 ? -logList[i].actual_balance : 0,
             closingDebit: -1
@@ -103,7 +105,7 @@ export class LogService {
       i++;
     }
     i = length-1;
-    while (i >= 0 && logList[i].date == maxDate && logList[i].owner.active) {
+    while (i >= 0 && (logList[i].owner.active||ownerOnly)) {
       if (debitByPerson[logList[i].owner.id] == null) {
         debitByPerson[logList[i].owner.id] = {
           openingDebit: 0,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OwnerService } from '../../service/owner.service';
@@ -30,6 +30,7 @@ export class OwnerFormComponent implements OnInit {
   ) { }
 
 
+
   get balance() {
     return this.ownerForm.get('balance');
   }
@@ -53,12 +54,13 @@ export class OwnerFormComponent implements OnInit {
     this.apartmentList = await this.apartmentService.getApartments();
   }
 
-  async fillBalance() {
+  async onChanges() {
     const id = this.ownerForm.value.apartment.id;
     const oldBalance = await this.ownerService.getOldOwnerDebit(id);
     if (oldBalance["balance"] < 0) {
       this.ownerForm.patchValue({ balance: oldBalance["balance"]});
     }
+    console.log("asdasd");
   }
 
 

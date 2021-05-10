@@ -1,18 +1,18 @@
-<div class="row justify-content-center">
-    <div class="col-md-2 border">
+<div class="row justify-content-center" [ngClass]="{'text-muted': !this.sumReport.owner.active}">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.sumReport.owner.active}">
         {{this.sumReport.owner.name}}
     </div>
-    <div class="col-md-2 border">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.sumReport.owner.active}">
         {{this.sumReport.openBalance}}
     </div>
-    <div class="col-md-2 border">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.sumReport.owner.active}">
         {{this.sumReport.closeBalance}}
     </div>
-    <div class="col-md-2 border">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.sumReport.owner.active}">
         {{this.sumReport.deposits}}
     
     </div>
-    <div class="col-md-2 border">
+    <div class="col-md-2 border" [ngClass]="{'bg-light': !this.sumReport.owner.active}">
         {{this.sumReport.expenses}}
     </div>
 </div>

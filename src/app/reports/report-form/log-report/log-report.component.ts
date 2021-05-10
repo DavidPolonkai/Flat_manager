@@ -11,6 +11,8 @@ export class LogReportComponent implements OnChanges {
 
   @Input()
   logList: Log[];
+  @Input()
+  isOwnerOnly: boolean;
   openingDebit=0;
   closingDebit = 0;
 
@@ -18,7 +20,7 @@ export class LogReportComponent implements OnChanges {
   private formBuilder:FormBuilder) { }
 
   ngOnChanges(): void {
-    const debits = this.logService.calculateDebits(this.logList);
+    const debits = this.logService.calculateDebits(this.logList,this.isOwnerOnly);
     this.openingDebit = debits[0];
     this.closingDebit = debits[1];
   }

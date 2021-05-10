@@ -24,6 +24,7 @@ export class ReportFormComponent implements OnInit {
   sumReportList: SumReport[] = [];
   visibleLog = false;
   visibleSum = false;
+  isOwnerOnly = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,9 +40,11 @@ export class ReportFormComponent implements OnInit {
     const values = this.reportForm.value;
     this.logList = [];
     if (values.owner == null) {
+      this.isOwnerOnly = false;
       this.logList = await this.logService.getLogsByDates(values.startDate, values.endDate);
     }
     else {
+      this.isOwnerOnly = true;
       this.logList = await this.logService.getLogsByDatesAndOwner(values.startDate, values.endDate, values.owner);
     }
     this.visibleSum = false;

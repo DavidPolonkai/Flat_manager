@@ -11,9 +11,10 @@ export class OwnerController extends Controller{
     create = async (req, res) => {
         const owner: Owner = req.body
         const entity = this.repository.create(req.body);
+        console.log(owner);
         try {
             this.disOwn(owner);
-            const entityAdded = await this.repository.save(entity);     
+            const entityAdded = await this.repository.save(entity);
             res.json(entityAdded);
         } catch (err) {
             console.error(err);
