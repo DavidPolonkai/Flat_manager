@@ -57,7 +57,7 @@ export class OwnerFormComponent implements OnInit {
   async onChanges() {
     const id = this.ownerForm.value.apartment.id;
     const oldBalance = await this.ownerService.getOldOwnerDebit(id);
-    if (oldBalance["balance"] < 0) {
+    if (oldBalance["balance"] <= 0) {
       this.ownerForm.patchValue({ balance: oldBalance["balance"]});
     }
     console.log("asdasd");
